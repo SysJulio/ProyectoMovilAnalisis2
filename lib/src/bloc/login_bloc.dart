@@ -11,16 +11,15 @@ class LoginBloc with Validators {
   Stream<String> get passwordStream =>
       _passwordController.stream.transform(validarPassword);
 
-  //Stream<bool> get formValidStream =>
-  //  Observable.combineLatest2(emailStream, passwordStream, (e, p) => true);
-
+  Stream<bool> get formValidStream =>
+      Observable.combineLatest2(emailStream, passwordStream, (e, p) => true);
   // Insertar valores al Stream
   Function(String) get changeEmail => _emailController.sink.add;
   Function(String) get changePassword => _passwordController.sink.add;
 
   // Obtener el último valor ingresado a los streams
-  //String get email => _emailController.value;
-  //String get password => _passwordController.value;
+  String get email => _emailController.value;
+  String get password => _passwordController.value;
 
   dispose() {
     _emailController?.close();

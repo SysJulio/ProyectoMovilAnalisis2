@@ -20,6 +20,7 @@ class Provider extends InheritedWidget {
   bool updateShouldNotify(InheritedWidget oldWidget) => true;
 
   static LoginBloc of(BuildContext context) {
+    // ignore: deprecated_member_use
     return (context.inheritFromWidgetOfExactType(Provider) as Provider)
         .loginBloc;
   }
